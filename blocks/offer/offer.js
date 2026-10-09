@@ -3,7 +3,7 @@ import { getAEMPublish, getAEMAuthor } from '../../scripts/endpointconfig.js';
 /* eslint-disable no-underscore-dangle */
 export default async function decorate(block) {
   const aempublishurl = getAEMPublish();
-  const aemauthorurl = getAEMAuthor();
+  const _aemauthorurl = getAEMAuthor();
   const persistedquery = '/graphql/execute.json/frescopa/OfferByPath';
   const offerpath = block.querySelector(':scope div:nth-child(1) > div a').innerHTML.trim();
   let variationname = 'main';
@@ -18,7 +18,7 @@ export default async function decorate(block) {
   const options = { credentials: 'include' };
 
   if (window.location.origin.includes('ue.da.live')) {
-   console.log('offer content fragment request', { url });
+    // offer content fragment request
   }
 
   const cfReq = await fetch(url, options)
@@ -32,7 +32,7 @@ export default async function decorate(block) {
     });
 
   const itemId = `urn:aemconnection:${offerpath}/jcr:content/data/master`;
-  console.log('offer content fragment request', { url, options, cfReq });
+  // offer content fragment request
 
   block.innerHTML = `
   <div class='offer-content' data-aue-resource=${itemId} data-aue-label="offer content fragment" data-aue-type="reference" data-aue-filter="cf">

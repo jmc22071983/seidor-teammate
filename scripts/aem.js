@@ -620,7 +620,7 @@ async function loadHeader(header) {
   const headerBlock = buildBlock('header', '');
   header.append(headerBlock);
   decorateBlock(headerBlock);
-  return loadBlock(headerBlock);
+  await loadBlock(headerBlock);
 }
 
 /**
@@ -633,7 +633,7 @@ async function loadFooter(footer) {
   const footerBlock = buildBlock('footer', '');
   footer.append(footerBlock);
   decorateBlock(footerBlock);
-  return loadBlock(footerBlock);
+  await loadBlock(footerBlock);
 }
 
 /**

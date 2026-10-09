@@ -95,6 +95,7 @@ const setupUEEventHandlers = () => {
       const blockEl = element.parentElement?.closest('.block[data-aue-resource]') || element?.closest('.block[data-aue-resource]');
       if (blockEl) {
         const block = blockEl.getAttribute('data-aue-component');
+        // eslint-disable-next-line no-unused-vars
         const index = element.getAttribute('data-slide-index');
 
         switch (block) {

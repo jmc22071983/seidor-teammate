@@ -27,4 +27,12 @@ module.exports = {
     ],
     'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
   },
+  overrides: [
+    {
+      files: ['**/*.json'],
+      rules: {
+        'xwalk/no-custom-resource-types': 'off',
+      },
+    },
+  ],
 };

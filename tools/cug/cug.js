@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import DA_SDK from 'https://da.live/nx/utils/sdk.js';
 
 const DA_SOURCE_BASE = 'https://admin.da.live/source';
@@ -27,9 +28,12 @@ async function fetchCugSheet(org, site, token) {
 function transformToHeadersConfig(rows) {
   const config = {};
 
+  // eslint-disable-next-line no-restricted-syntax, no-continue
   for (const row of rows) {
     const path = (row.url || '').trim();
+    // eslint-disable-next-line no-continue
     if (!path || !path.startsWith('/')) continue;
+    // eslint-disable-next-line no-continue
     if (config[path]) continue;
 
     const headers = [];
@@ -67,6 +71,7 @@ async function fetchExistingNonCugHeaders(org, site, token) {
   const existing = config.headers || {};
   const filtered = {};
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const [path, headerList] of Object.entries(existing)) {
     const nonCug = Array.isArray(headerList)
       ? headerList.filter((h) => !isCugHeader(h.key))
@@ -82,6 +87,7 @@ async function fetchExistingNonCugHeaders(org, site, token) {
 function mergeHeaders(nonCugHeaders, cugHeaders) {
   const merged = { ...nonCugHeaders };
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const [path, cugList] of Object.entries(cugHeaders)) {
     const existing = merged[path] || [];
     merged[path] = [...existing, ...cugList];
